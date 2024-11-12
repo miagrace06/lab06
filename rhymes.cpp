@@ -54,7 +54,6 @@ int main() {
 	}
 	inputFile.close();
 
-	cout << "There are " <<lineCount << " lines in this poem, ";
 
 	for (int i = 0; i < currentIndex - 1; ++i) {
 		if (compareWords(lastWords[i], lastWords[i + 1])) {
@@ -62,7 +61,8 @@ int main() {
 			rhymeCount++;
 		}
 	}
-
+	cout << "There are " <<lineCount << " lines in this poem, ";
+	
 	if (rhymeCount == 0) {
 		cout << "No rhymes found." << endl;
 	} else {
