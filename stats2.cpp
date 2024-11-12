@@ -87,10 +87,10 @@ int main() {
 
 	cout << fixed << setprecision(2);
 	cout << "Here are some statistics:" << endl;
-	cout << "N: " << count <<endl;
-	cout << "Average: " << average << endl;
-	cout << "Median: " << median << endl;
-	cout << "StdDev: " << stddev << endl;
+	cout << " N: " << count << endl;
+	cout << " Average: " << average << endl;
+	cout << " Median: " << median << endl;
+	cout << " StdDev: " << stddev << endl;
 
 	delete[] array;
 	return 0;
