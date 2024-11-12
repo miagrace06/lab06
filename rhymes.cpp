@@ -96,5 +96,3 @@ bool compareWords(string word1, string word2) {
 	}
 	return (word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2));
 	}
-	
-
