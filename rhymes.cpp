@@ -13,14 +13,14 @@ bool compareWords(string word1, string word2);
 
 int main() {
 	string filename;
-	cout << "Enter Filename: ";
+	cout << "Enter filename: ";
 	cin >> filename;
 
 	ifstream inputFile(filename);
 
 	if(!inputFile) {
 		cerr << "Cannot open " << filename << endl;
-			return 1;
+		return 1;
 	}
 	string line;
 	int lineCount = 0;
@@ -36,6 +36,7 @@ int main() {
 			cleanUp(lastWord);
 			lastWords[currentIndex] = lastWord;
 			currentIndex++;
+			
 			if(currentIndex >= maxLines) {
 				maxLines *= 2;
 				string* temp = new string[maxLines];
@@ -51,20 +52,24 @@ int main() {
 
 
 		}
-	}	
+	}
+
+	for (int i = 0; i < currentIndex - 1; ++i) {
+		for (int j = i + 1; j < currentIndex; ++j) {
+			if (compareWords(lastWords[i], lastWords[j])) {
+				cout << lastWords[i] << " and " << lastWords[j] << endl;
+				rhymeCount++;
+			}
+		}
+	}
+
 	if (rhymeCount == 0) {
 		cout << "No rhymes found." << endl;
 		cout << "There are " <<lineCount << " lines in this poem, ";
 	} else {
-		for (int i = 0; i < currentIndex - 1; ++i) {
-			if (compareWords(lastWords[i], lastWords[i + 1])) {
-				cout << lastWords[i] << " and " << lastWords[i + 1]<< endl;
-				rhymeCount++;
-			}
-		}
 		cout << "There are " << rhymeCount << " pair";
 		if (rhymeCount > 1) cout << "s";
-		cout << " of rhyming words." << endl;
+		cout << " of rhyming words." <, endl;
 		
 		double rhymeLineDensity = double(rhymeCount) / lineCount;
 		cout << "so the rhyme-line density is: " << fixed << setprecision(2)<< rhymeLineDensity<<endl;
