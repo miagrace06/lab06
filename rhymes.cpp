@@ -60,16 +60,14 @@ int main() {
 			cout << lastWords[i] << " and " << lastWords[i + 1]<< endl;
 			rhymeCount++;
 		}
-	}
-	cout << "There are " <<lineCount << " lines in this poem, ";
-	
+	}	
 	if (rhymeCount == 0) {
 		cout << "No rhymes found." << endl;
 	} else {
 		cout << "There are " << rhymeCount << " pair";
 		if (rhymeCount > 1) cout << "s";
 		cout << " of rhyming words." << endl;
-
+		cout << "There are " <<lineCount << " lines in this poem, ";
 		double rhymeLineDensity = double(rhymeCount) / lineCount;
 		cout << "so the rhyme-line density is: " << fixed << setprecision(2)<< rhymeLineDensity<<endl;
 	}
