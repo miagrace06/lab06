@@ -55,19 +55,22 @@ int main() {
 	inputFile.close();
 
 
-	for (int i = 0; i < currentIndex - 1; ++i) {
-		if (compareWords(lastWords[i], lastWords[i + 1])) {
-			cout << lastWords[i] << " and " << lastWords[i + 1]<< endl;
-			rhymeCount++;
 		}
 	}	
-	cout << "There are " <<lineCount << " lines in this poem, ";
 	if (rhymeCount == 0) {
 		cout << "No rhymes found." << endl;
+		cout << "There are " <<lineCount << " lines in this poem, ";
 	} else {
+		for (int i = 0; i < currentIndex - 1; ++i) {
+			if (compareWords(lastWords[i], lastWords[i + 1])) {
+				cout << lastWords[i] << " and " << lastWords[i + 1]<< endl;
+				rhymeCount++;
+			}
+		}
 		cout << "There are " << rhymeCount << " pair";
 		if (rhymeCount > 1) cout << "s";
 		cout << " of rhyming words." << endl;
+		
 		double rhymeLineDensity = double(rhymeCount) / lineCount;
 		cout << "so the rhyme-line density is: " << fixed << setprecision(2)<< rhymeLineDensity<<endl;
 	}
