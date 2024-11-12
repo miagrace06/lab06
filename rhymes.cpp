@@ -54,7 +54,7 @@ int main() {
 	}
 	inputFile.close();
 
-	cout << "There are " <<lineCount << " lines in this poem." << endl;
+	cout << "There are " <<lineCount << " lines in this poem, ";
 
 	for (int i = 0; i < currentIndex - 1; ++i) {
 		if (compareWords(lastWords[i], lastWords[i + 1])) {
@@ -71,7 +71,7 @@ int main() {
 		cout << " of rhyming words." << endl;
 
 		double rhymeLineDensity = double(rhymeCount) / lineCount;
-		cout << "The rhyme-line density is: " << fixed << setprecision(2)<< rhymeLineDensity<<endl;
+		cout << "so the rhyme-line density is: " << fixed << setprecision(2)<< rhymeLineDensity<<endl;
 	}
 	delete[] lastWords;
 	return 0;
