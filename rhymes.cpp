@@ -61,7 +61,7 @@ int main() {
 
 	if (rhymeCount == 0) {
 		cout << "No rhymes found." << endl;
-		cout << "There are " <<lineCount << " lines in this poem, ";
+		cout << "There are " <<lineCount << " lines in this poem.";
 	} else {
 		cout << "There are " << rhymeCount << " pair";
 		if (rhymeCount > 1) cout << "s";
