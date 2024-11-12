@@ -7,11 +7,6 @@
 
 using namespace std;
 
-// FUNCTION DECLARATIONS: YOU MUST DEFINE AND USE THESE (do not remove):
-//      You can declare/define other functions if you like as well,
-//      but you must use the 3 functions below.
-// See lab description for more on these functions.
-
 string findLastWord(string line);
 void cleanUp(string &word);
 bool compareWords(string word1, string word2);
