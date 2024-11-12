@@ -52,7 +52,7 @@ int main() {
 
 	for (int i = 0; i < currentIndex - 1; ++i) {
 		for (int j = i + 1; j < currentIndex; ++j) {
-			if (compareWords(lastWords[i], lastWords[j])) {
+			if (lastWords[i] != lastWords[j] && compareWords(lastWords[i], lastWords[j])) {
 				cout << lastWords[i] << " and " << lastWords[j] << endl;
 				rhymeCount++;
 			}
@@ -68,7 +68,7 @@ int main() {
 		cout << " of rhyming words." << endl;
 		
 		double rhymeLineDensity = double(rhymeCount) / lineCount;
-		cout << "so the rhyme-line density is: " << fixed << setprecision(2)<< rhymeLineDensity<<endl;
+		cout << "So the rhyme-line density is: " << fixed << setprecision(2)<< rhymeLineDensity<<endl;
 	}
 	delete[] lastWords;
 	return 0;
