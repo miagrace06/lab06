@@ -94,47 +94,12 @@ void cleanUp(string &word) {
 bool compareWords(string word1, string word2) {
     // If either word is too short, they don't rhyme
     if (word1.size() < 2 || word2.size() < 2) {
-        return false;
+	return false;
     }
-
-    // Don't consider identical words as rhyming
     if (word1 == word2) {
-        return false;
+	return false;
     }
 
-    // Check for 'ow' endings
-    if ((word1.size() >= 2 && word2.size() >= 2) &&
-        (word1.substr(word1.size() - 2) == "ow" && 
-         word2.substr(word2.size() - 2) == "ow")) {
-        return true;
-    }
-
-    // Check for 'ay' endings
-    if ((word1.size() >= 2 && word2.size() >= 2) &&
-        (word1.substr(word1.size() - 2) == "ay" && 
-         word2.substr(word2.size() - 2) == "ay")) {
-        return true;
-    }
-
-    // Check for 'ee' endings
-    if ((word1.size() >= 2 && word2.size() >= 2) &&
-        ((word1.substr(word1.size() - 2) == "ee" && 
-          word2.substr(word2.size() - 2) == "ee") ||
-         (word1.substr(word1.size() - 3) == "eem" && 
-          word2.substr(word2.size() - 2) == "ee") ||
-         (word1.substr(word1.size() - 2) == "ee" && 
-          word2.substr(word2.size() - 3) == "eem"))) {
-        return true;
-    }
-
-    // Check for 'one'/'gone' type rhymes
-    if ((word1.size() >= 3 && word2.size() >= 3) &&
-        ((word1.substr(word1.size() - 3) == "one" && 
-          word2.substr(word2.size() - 3) == "one"))) {
-        return true;
-    }
-
-    // Default to not rhyming
-    return false;
-}
+    // Compare last two letters
+    return (word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2));
 	
