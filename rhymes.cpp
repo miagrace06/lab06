@@ -95,9 +95,9 @@ bool compareWords(string word1, string word2) {
     // If either word is too short, they don't rhyme
 	if (word1.size() < 2 || word2.size() < 2) {
 		return false;
-    }
+	}
 	if (word1 == word2) {
 		return false;
-    }
+	}
 	return (word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2));
-	
+}
