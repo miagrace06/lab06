@@ -92,34 +92,49 @@ void cleanUp(string &word) {
 		}
 		}
 bool compareWords(string word1, string word2) {
-	if (word1.size() < 2 || word2.size() < 2) {
-		return false;
-	}
-	if (word1 == word2) {
-		return true;
-	}
-	int lastVowel1 = -1;
-	int lastVowel2 = -1;
+    // If either word is too short, they don't rhyme
+    if (word1.size() < 2 || word2.size() < 2) {
+        return false;
+    }
 
-	for(int i = word1.size() - 1; i >= 0; i--) {
-		char c = word1[i];
-		if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
-			lastVowel1 = i;
-			break;
-}
-}
-	for(int i = word2.size() - 1; i >= 0; i--) {
-		char c = word2[i];
-		if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
-			lastVowel2 = i;
-			break;
-		}
-	}
-	if (lastVowel1 == -1 || lastVowel2 == -1) {
-		return (word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2));
-	}
-	string end1 = word1.substr(lastVowel1);
-	string end2 = word2.substr(lastVowel2);
-	return(end1 == end2);
+    // Don't consider identical words as rhyming
+    if (word1 == word2) {
+        return false;
+    }
+
+    // Check for 'ow' endings
+    if ((word1.size() >= 2 && word2.size() >= 2) &&
+        (word1.substr(word1.size() - 2) == "ow" && 
+         word2.substr(word2.size() - 2) == "ow")) {
+        return true;
+    }
+
+    // Check for 'ay' endings
+    if ((word1.size() >= 2 && word2.size() >= 2) &&
+        (word1.substr(word1.size() - 2) == "ay" && 
+         word2.substr(word2.size() - 2) == "ay")) {
+        return true;
+    }
+
+    // Check for 'ee' endings
+    if ((word1.size() >= 2 && word2.size() >= 2) &&
+        ((word1.substr(word1.size() - 2) == "ee" && 
+          word2.substr(word2.size() - 2) == "ee") ||
+         (word1.substr(word1.size() - 3) == "eem" && 
+          word2.substr(word2.size() - 2) == "ee") ||
+         (word1.substr(word1.size() - 2) == "ee" && 
+          word2.substr(word2.size() - 3) == "eem"))) {
+        return true;
+    }
+
+    // Check for 'one'/'gone' type rhymes
+    if ((word1.size() >= 3 && word2.size() >= 3) &&
+        ((word1.substr(word1.size() - 3) == "one" && 
+          word2.substr(word2.size() - 3) == "one"))) {
+        return true;
+    }
+
+    // Default to not rhyming
+    return false;
 }
 	
