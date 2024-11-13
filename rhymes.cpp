@@ -115,7 +115,7 @@ bool compareWords(string word1, string word2) {
 			break;
 		}
 	}
-	if (lastVowel1 = -1 || lastVowel2 == -1) {
+	if (lastVowel1 == -1 || lastVowel2 == -1) {
 		return (word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2));
 	}
 	string end1 = word1.substr(lastVowel1);
