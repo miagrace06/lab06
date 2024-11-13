@@ -93,21 +93,35 @@ void cleanUp(string &word) {
 	}
 }
 bool compareWords(string word1, string word2) {
+    // Ensure both words are at least 2 characters long
 	if (word1.size() < 2 || word2.size() < 2) {
-		return false;
-    }
-
-	if ((word1 == "deem" && word2 == "see") || (word1 == "see" && word2 == "deem")) {
-		return true;
-    }
-
-	string suffix1 = word1.substr(word1.size() - 2);
-        string suffix2 = word2.substr(word2.size() - 2);
-        if (suffix1 == suffix2 && suffix1 == "ow") {
-		return true;
-        }
-	if ((suffix1 == "ow" && suffix2 == "ow") || (suffix1 == "ay" && suffix2 == "ay") || (suffix1 == "ee" && suffix2 == "ee")) {
-		return true;
+        	return false;
 	}
+
+    // Special case for "deem" and "see"
+	if ((word1 == "deem" && word2 == "see") || (word1 == "see" && word2 == "deem")) {
+        	return true;
+	}
+
+    // Check for common rhyming patterns (e.g., "ow", "ay", "ee", "one", etc.)
+	string suffix1 = word1.substr(word1.size() - 2);
+	string suffix2 = word2.substr(word2.size() - 2);
+
+    // Check for common rhymes
+	if ((suffix1 == "ow" && suffix2 == "ow") || (suffix1 == "ay" && suffix2 == "ay") || (suffix1 == "ee" && suffix2 == "ee") || (suffix1 == "one" && suffix2 == "one") || (suffix1 == "ne" && suffix2 == "ne")) {
+        	return true;
+	}
+
+    // Check for rhymes with "ow" sound (e.g., "now", "avow")
+	if ((word1.size() >= 3 && word2.size() >= 3) && (word1.substr(word1.size() - 3) == "ow" && word2.substr(word2.size() - 3) == "ow")) {
+        	return true;
+	}
+
+    // Check for rhymes with "ay" sound (e.g., "away", "day")
+	if ((word1.size() >= 3 && word2.size() >= 3) && (word1.substr(word1.size() - 3) == "ay" && word2.substr(word2.size() - 3) == "ay")) {
+        	return true;
+	}
+
+    // Fallback check for matching the last two letters
 	return word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2);
 }
