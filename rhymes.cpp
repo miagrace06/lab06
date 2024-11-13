@@ -103,10 +103,7 @@ bool compareWords(string word1, string word2) {
         	return true;
 	}
 
-    // We will use a more lenient matching strategy:
-    // Match words with the same phonetic-ending sounds like "ow", "ay", "ee", "one", etc.
 
-    // Check for rhyming patterns: "ow", "ay", "ee", "one", "ne
 	string suffix1 = word1.substr(word1.size() - 2);  // Check the last 2 chars first
 	string suffix2 = word2.substr(word2.size() - 2);  // Check the last 2 chars
 
