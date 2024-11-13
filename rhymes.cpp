@@ -106,7 +106,7 @@ bool compareWords(string word1, string word2) {
         if (suffix1 == suffix2 && suffix1 == "ow") {
 		return true;
         }
-	if ((suffix == "ow" && suffix2 == "ow" || (suffix1 == "ay" && suffix2 == "ay" || (suffix1 = "ee" && suffix2 == "ee")) {
+	if ((suffix1 == "ow" && suffix2 == "ow") || (suffix1 == "ay" && suffix2 == "ay") || (suffix1 == "ee" && suffix2 == "ee")) {
 		return true;
 	}
 	return word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2);
