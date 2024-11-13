@@ -51,8 +51,7 @@ int main() {
     	for (int i = 0; i < currentIndex - 1; ++i) {
         	for (int j = i + 1; j < currentIndex; ++j) {
             		if (lastWords[i] != lastWords[j] && compareWords(lastWords[i], lastWords[j])) {
-                		cout << lastWords[i] << endl;
-				cout << lastWords[j] << endl;
+                		cout << lastWords[i] << " and " << lastWords[j] << endl;
 				rhymeCount++;
 			}
 		}
@@ -105,22 +104,23 @@ bool compareWords(string word1, string word2) {
     	if (suffix1 == suffix2) {
         	return true;
 	}
-
 	
-
-	if (word1.size() > 3 && word2.size() > 3) {
+	if (word1.size() > 2 && word2.size() > 2) {
 		suffix1 = word1.substr(word1.size() - 3);
         	suffix2 = word2.substr(word2.size() - 3);
         	if (suffix1 == suffix2) {
             		return true;
 		}
+	}
+
+	if (word1.size() > 3 && word2.size() > 3) {
 		suffix1 = word1.substr(word1.size() - 4);
-		suffix2 = word2.substr(word2.size() - 4);
-		if(suffix1 == suffix2) {
-			return true;
+        	suffix2 = word2.substr(word2.size() - 4);
+        	if (suffix1 == suffix2) {
+            		return true;
 		}
 	}
-	if (word1.size() > 2 && word2.size() > 2) {
+	if (word1.size() > 1 && word2.size() > 1) {
         	char lastChar1 = word1[word1.size() - 1];
 		char lastChar2 = word2[word2.size() - 1];
         	if (isalpha(lastChar1) && isalpha(lastChar2)) {
