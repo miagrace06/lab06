@@ -108,7 +108,7 @@ bool compareWords(string word1, string word2) {
 	if (word1.size > 3 && word2.size() > 3) {
 		suffix1 = word1.substr(word1.size()-4);
 		suffix2 = word2.substr(word2.size()-4);
-		if (suffix1 = suffix2) {
+		if (suffix1 == suffix2) {
 			return true;
 		}
 	}
