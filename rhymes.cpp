@@ -86,20 +86,18 @@ string findLastWord(string line) {
 void cleanUp(string &word) {
 	while (!word.empty() && !isalpha(word.back())) {
 		word.pop_back();
-			}
+	}
 	for (char &c : word) {
 		c = tolower(c);
-		}
-		}
+	}
+}
 bool compareWords(string word1, string word2) {
     // If either word is too short, they don't rhyme
-    if (word1.size() < 2 || word2.size() < 2) {
-	return false;
+	if (word1.size() < 2 || word2.size() < 2) {
+		return false;
     }
-    if (word1 == word2) {
-	return false;
+	if (word1 == word2) {
+		return false;
     }
-
-    // Compare last two letters
-    return (word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2));
+	return (word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2));
 	
