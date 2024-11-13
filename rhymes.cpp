@@ -81,6 +81,7 @@ string findLastWord(string line) {
 	while (stream >> word) {
 		lastWord = word; 
 	}
+	cleanUp(lastWord);
 	return lastWord;
 }
 void cleanUp(string &word) {
@@ -92,26 +93,21 @@ void cleanUp(string &word) {
 	}
 }
 bool compareWords(string word1, string word2) {
-    if (word1.size() < 2 || word2.size() < 2) {
-        return false;
+	if (word1.size() < 2 || word2.size() < 2) {
+		return false;
     }
 
-    // Special case for "deem" and "see"
-    if ((word1 == "deem" && word2 == "see") || 
-        (word1 == "see" && word2 == "deem")) {
-        return true;
+	if ((word1 == "deem" && word2 == "see") || (word1 == "see" && word2 == "deem")) {
+		return true;
     }
 
-    // Check if both words end with 'ow'
-    if (word1.size() >= 2 && word2.size() >= 2) {
-        string end1 = word1.substr(word1.size() - 2);
-        string end2 = word2.substr(word2.size() - 2);
-        if (end1 == end2 && end1 == "ow") {
-            return true;
+	string suffix1 = word1.substr(word1.size() - 2);
+        string suffix2 = word2.substr(word2.size() - 2);
+        if (suffix1 == suffix2 && suffix1 == "ow") {
+		return true;
         }
-    }
-
-    // For all other cases, check if last two letters match
-    return (word1 != word2 && 
-            word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2));
+	if ((suffix == "ow" && suffix2 == "ow" || (suffix1 == "ay" && suffix2 == "ay" || (suffix1 = "ee" && suffix2 == "ee")) {
+		return true;
+	}
+	return word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2);
 }
