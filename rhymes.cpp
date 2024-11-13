@@ -95,5 +95,31 @@ bool compareWords(string word1, string word2) {
 	if (word1.size() < 2 || word2.size() < 2) {
 		return false;
 	}
-	return (word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2));
+	if (word1 == word2) {
+		return true;
 	}
+	int lastVowel1 = -1;
+	int lastVowel2 = -1;
+
+	for(int i = word1.size() - 1; i >= 0; i--) {
+		char c = word1[i];
+		if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+			lastVowel1 = i;
+			break;
+}
+}
+	for(int i = word2.size() - 1; i >= 0; i--) {
+		char c = word2[i];
+		if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+			lastVowel2 = i;
+			break;
+		}
+	}
+	if (lastVowel1 = -1 || lastVowel2 == -1) {
+		return (word1.substr(word1.size() - 2) == word2.substr(word2.size() - 2));
+	}
+	string end1 = word1.substr(lastVowel1);
+	string end2 = word2.substr(lastVowel2);
+	return(end1 == end2);
+}
+	
