@@ -114,8 +114,8 @@ bool compareWords(string word1, string word2) {
         	if (suffix1 == suffix2) {
             		return true;
 		}
-		suffix1 = word1.susbstr(word1.size() - 4);
-		suffix2 = word2.susbstr(word2.size() - 4);
+		suffix1 = word1.substr(word1.size() - 4);
+		suffix2 = word2.substr(word2.size() - 4);
 		if(suffix1 == suffix2) {
 			return true;
 		}
