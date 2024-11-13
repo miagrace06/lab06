@@ -98,27 +98,19 @@ bool compareWords(string word1, string word2) {
         	return false;
 	}
 
-    // Special case for "deem" and "see"
-	if ((word1 == "deem" && word2 == "see") || (word1 == "see" && word2 == "deem")) {
-        	return true;
-	}
-
 
 	string suffix1 = word1.substr(word1.size() - 2);  // Check the last 2 chars first
 	string suffix2 = word2.substr(word2.size() - 2);  // Check the last 2 chars
-
-    // Common suffixes for rhymes
-	if ((suffix1 == "ow" && suffix2 == "ow") || (suffix1 == "ay" && suffix2 == "ay") || (suffix1 == "ee" && suffix2 == "ee") ||(suffix1 == "ne" && suffix2 == "ne")) {
+	if (suffix1 == suffix2) {
 		return true;
 	}
 
-    // Check for the more complex "-one" ending (e.g., "none" and "gone")
-	string suffix1Long = word1.substr(word1.size() - 3);  // last 3 chars
-	string suffix2Long = word2.substr(word2.size() - 3);  // last 3 chars
-	
-	if (suffix1Long == "one" && suffix2Long == "one") {
-        	return true;
+	if (word1.size > 3 && word2.size() > 3) {
+		suffix1 = word1.substr(word1.size()-4);
+		suffix2 = word2.substr(word2.size()-4);
+		if (suffix1 = suffix2) {
+			return true;
+		}
 	}
-
     	return false;  // Default: no rhyme
 }
