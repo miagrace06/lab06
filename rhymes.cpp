@@ -103,19 +103,25 @@ bool compareWords(string word1, string word2) {
         	return true;
 	}
 
-    // Check for common rhyming patterns (e.g., "ow", "ay", "ee", "one", etc.)
-	string suffix1 = word1.substr(word1.size() - 3);
-	string suffix2 = word2.substr(word2.size() - 3);
+    // We will use a more lenient matching strategy:
+    // Match words with the same phonetic-ending sounds like "ow", "ay", "ee", "one", etc.
 
-    // Check for common rhymes
-	if ((suffix1 == "ow" && suffix2 == "ow") || (suffix1 == "ay" && suffix2 == "ay") || (suffix1 == "ee" && suffix2 == "ee") || (suffix1 == "one" && suffix2 == "one") || (suffix1 == "ne" && suffix2 == "ne")) {
+    // Check for rhyming patterns: "ow", "ay", "ee", "one", "ne
+	string suffix1 = word1.substr(word1.size() - 2);  // Check the last 2 chars first
+	string suffix2 = word2.substr(word2.size() - 2);  // Check the last 2 chars
+
+    // Common suffixes for rhymes
+	if ((suffix1 == "ow" && suffix2 == "ow") || (suffix1 == "ay" && suffix2 == "ay") || (suffix1 == "ee" && suffix2 == "ee") ||(suffix1 == "ne" && suffix2 == "ne")) {
+		return true;
+	}
+
+    // Check for the more complex "-one" ending (e.g., "none" and "gone")
+	string suffix1Long = word1.substr(word1.size() - 3);  // last 3 chars
+	string suffix2Long = word2.substr(word2.size() - 3);  // last 3 chars
+	
+	if (suffix1Long == "one" && suffix2Long == "one") {
         	return true;
 	}
 
-	string suffix1_2 = word1.substr(word1.size() - 2);
-	string suffix2_2 = word2.substr(word2.size() - 2);
-	if ((suffix1_2 == "ow" && suffix2_2 == "ow") || (suffix1_2 == "ay" && suffix2_2 == "ay") || (suffix1_2 == "ee" && suffix2_2 == "ee") || (suffix1_2 == "ne" && suffix2_2 == "ne")) {
-        	return true;
-	}
-	return false;
+    	return false;  // Default: no rhyme
 }
